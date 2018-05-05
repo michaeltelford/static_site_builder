@@ -6,5 +6,11 @@ require "static_site_builder"
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
+def reload
+  load "./lib/static_site_builder.rb"
+end
+
+puts "Type 'reload' to pull in new code changes."
+
 require "pry"
 Pry.start
