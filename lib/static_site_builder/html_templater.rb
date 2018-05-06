@@ -13,9 +13,8 @@ class HTMLTemplater
     @template_filepath = template_filepath
     @html = html
 
-    # The html takes precedence over the template_filepath if provided.
     if not @html
-      File.open(@template_filepath){ |f| @html = f.read }
+      @html = File.read(@template_filepath)
     end
 
     if not valid?
