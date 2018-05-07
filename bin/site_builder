@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+require "static_site_builder"
+require "thor"
+
+class SiteBuilderCLI < Thor
+  desc "build", "Builds a static HTML website from markdown"
+  option :in, default: ".", desc: "Input markdown file dir"
+  option :out, default: ".", desc: "Output HTML file dir"
+  option(
+    :template,
+    default: StaticSiteBuilder::HTMLTemplater::DEFAULT_TEMPLATE,
+    desc: "HTML template which embeds the markdown (<body>) of each webpage"
+  )
+  def build
+    template = StaticSiteBuilder::HTMLTemplater.new(
+      template_filepath: options[:template]
+    )
+
+    html = StaticSiteBuilder.build_website(
+      options[:in],
+      template,
+      options[:out]
+    )
+
+    if not html.empty?
+      puts "Site created with #{html.length} HTML files:"
+      puts html
+    else
+      puts "Site wasn't created, check the input dir: #{options[:in]}"
+    end
+  rescue Exception => ex
+    puts "An error occurred: #{ex.message}"
+  end
+end
+
+SiteBuilderCLI.start(ARGV)

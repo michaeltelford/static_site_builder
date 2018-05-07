@@ -2,7 +2,8 @@
 require "static_site_builder/version"
 require "static_site_builder/html_templater"
 
-# Require all external gems here to enable a single require.
+# Require any non lib code here to enable a single require.
+require "fileutils"
 require "redcarpet"
 
 module StaticSiteBuilder

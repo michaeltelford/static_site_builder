@@ -2,7 +2,7 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 require "static_site_builder"
 
-task :default => :help
+task default: :help
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -20,7 +20,7 @@ task :build_site, :markdown_dirpath, :output_dirpath do |t, args|
   args.with_defaults(output_dirpath: args[:markdown_dirpath])
   puts StaticSiteBuilder.build_website(
     args[:markdown_dirpath],
-    HTMLTemplater.new,
+    StaticSiteBuilder::HTMLTemplater.new,
     args[:output_dirpath]
   )
 end
