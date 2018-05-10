@@ -1,0 +1,7 @@
+.DS_Store
+README.md
+LICENSE.txt
+Dockerfile
+CODE_OF_CONDUCT.md
+.travis.yml
+.dockerignore

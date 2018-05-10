@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     static_site_builder (0.1.0)
+      redcarpet (~> 3.4.0)
+      thor (~> 0.20)
 
 GEM
   remote: https://rubygems.org/
@@ -24,9 +26,7 @@ DEPENDENCIES
   minitest (~> 5.0)
   pry (~> 0.11)
   rake (~> 10.0)
-  redcarpet (~> 3.4.0)
   static_site_builder!
-  thor (~> 0.20)
 
 BUNDLED WITH
    1.16.0

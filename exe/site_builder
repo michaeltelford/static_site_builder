@@ -4,18 +4,21 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "static_site_builder"
 require "thor"
 
+DEFAULT_TEMPLATE = StaticSiteBuilder::HTMLTemplater::DEFAULT_TEMPLATE
+
 class SiteBuilderCLI < Thor
   desc "build", "Builds a static HTML website from markdown"
   option :in, default: ".", desc: "Input markdown file dir"
   option :out, default: ".", desc: "Output HTML file dir"
   option(
     :template,
-    default: StaticSiteBuilder::HTMLTemplater::DEFAULT_TEMPLATE,
+    default: DEFAULT_TEMPLATE,
     desc: "HTML template which embeds the markdown (<body>) of each webpage"
   )
   def build
     template = StaticSiteBuilder::HTMLTemplater.new(
-      template_filepath: options[:template]
+      template_filepath: options[:template],
+      gem_included_template: options[:template] == DEFAULT_TEMPLATE
     )
 
     html = StaticSiteBuilder.build_website(
@@ -25,10 +28,10 @@ class SiteBuilderCLI < Thor
     )
 
     if not html.empty?
-      puts "Site created with #{html.length} HTML files:"
+      puts "Site built with #{html.length} HTML files:"
       puts html
     else
-      puts "Site wasn't created, check the input dir: #{options[:in]}"
+      puts "No markdown files found in: #{options[:in]}"
     end
   rescue Exception => ex
     puts "An error occurred: #{ex.message}"

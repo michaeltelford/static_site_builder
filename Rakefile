@@ -11,7 +11,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task :help do
-  system "rake -T"
+  system "rake -D"
 end
 
 desc "Builds a static HTML site from markdown files"
