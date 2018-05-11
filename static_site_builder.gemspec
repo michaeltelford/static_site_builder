@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "static_site_builder/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "static_site_builder"
+  spec.name          = "static-site-builder"
   spec.version       = StaticSiteBuilder::VERSION
   spec.authors       = ["Michael Telford"]
   spec.email         = ["michael.telford@live.com"]
