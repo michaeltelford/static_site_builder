@@ -25,7 +25,7 @@ module StaticSiteBuilder
   def self.build_webpage(markdown_filepath, template, output_dirpath=nil)
     markdown = File.read(markdown_filepath)
 
-    html_body = self.render(markdown)
+    html_body = "<div>#{self.render(markdown)}</div>"
     html = template.render(html_body)
 
     dirpath = File.dirname(markdown_filepath)

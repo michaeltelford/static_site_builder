@@ -2,7 +2,7 @@
 
 Build a HTML website from markdown files.
 
-This gem will convert your markdown files into HTML files, embedding the generated HTML into a template (making up the full webpage). This gem's default [Bootstrap](https://getbootstrap.com/) template will be used unless you specify a template of your own. More on this further down. 
+This gem will convert your markdown files into HTML files, embedding the generated HTML into a template (making up the full webpage). This gem's default [Bootstrap](https://getbootstrap.com/) template will be used unless you specify a template of your own. More on this further down.
 
 ## Installation
 
@@ -13,16 +13,18 @@ This will add an executable called `site_builder` to your `$PATH`.
 ## Usage
 
 ```sh
-mkdir -p ~/my_site
-cd ~/my_site
-echo "# My Amazing Website" >> index.md
-site_builder build
-open index.html
+$ mkdir -p ~/my_site
+$ cd ~/my_site
+$ echo "# My Amazing Website" >> index.md
+$ site_builder build
+Site built with 1 HTML file(s):
+./index.html
+$ open index.html
 ```
 
-That's it! In this instance, there will be a newly generated mobile friendly `index.html` file in the same directory. 
+That's it! In this instance, there will be a newly generated mobile friendly `index.html` file in the same directory.
 
-Of course, you can specify an input and output directory as well as a custom HTML template to use instead of the default one if required. 
+Of course, you can specify an input and output directory as well as a custom HTML template to use instead of the default one.
 
 For full usage of `site_builder`, see:
 
@@ -30,9 +32,9 @@ For full usage of `site_builder`, see:
 
 ## Templating
 
-The default template uses Bootstrap 4.1 to enable a stylish and responsive website design out of the box. 
+The default template uses Bootstrap 4.1 to enable a stylish and responsive website design out of the box.
 
-Custom templates are simple HTML files which include an editable region (inside a `<body>` tag) consisting of the following markdown:
+Custom templates are simply HTML files which include an editable region (inside a `<body>` tag) consisting of the following markdown:
 
 ```html
 <div id="editable_region"></div>
@@ -40,7 +42,7 @@ Custom templates are simple HTML files which include an editable region (inside 
 
 The editable region `div` will be replaced with the generated HTML from your markdown.
 
-Of course you can include anything else that's common to your site in your template e.g. 
+Of course you can include anything else that's common to your site in your template e.g.
 
 - Navigation menu
 - Links to your own style sheets
@@ -49,7 +51,7 @@ Of course you can include anything else that's common to your site in your templ
 
 If using your own template, you must ensure it's valid HTML and that it contains the editable region `div` seen above. That's it.
 
-You can use this gem's built in [default template](https://github.com/michaeltelford/static_site_builder/blob/master/templates/default_template.html) as an example. 
+You can use this gem's built in [default template](https://github.com/michaeltelford/static_site_builder/blob/master/templates/default_template.html) as an example.
 
 ## Development
 
