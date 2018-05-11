@@ -28,7 +28,7 @@ class SiteBuilderCLI < Thor
     )
 
     if not html.empty?
-      puts "Site built with #{html.length} HTML files:"
+      puts "Site built with #{html.length} HTML file(s):"
       puts html
     else
       puts "No markdown files found in: #{options[:in]}"
