@@ -10,8 +10,15 @@ module StaticSiteBuilder
   # Converts markdown to html and returns it.
   def self.render(markdown)
     renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+      tables: true,
+      fenced_code_blocks: true,
       autolink: true,
-      tables: true
+      strikethrough: true,
+      superscript: true,
+      underline: true,
+      highlight: true,
+      quote: true,
+      footnotes: true
     )
     renderer.render(markdown)
   end
