@@ -8,7 +8,7 @@ This gem will convert your markdown files into HTML files, embedding the generat
 
     $ gem install static_site_builder
 
-This will add an executable called `site_builder` to your `$PATH`.
+This will add an executable called `static_site_builder` to your `$PATH`.
 
 ## Usage
 
@@ -16,7 +16,7 @@ This will add an executable called `site_builder` to your `$PATH`.
 $ mkdir -p ~/my_site
 $ cd ~/my_site
 $ echo "# My Amazing Website" >> index.md
-$ site_builder build
+$ static_site_builder build
 Site built with 1 HTML file(s):
 ./index.html
 $ open index.html
@@ -26,9 +26,9 @@ That's it! In this instance, there will be a newly generated mobile friendly `in
 
 Of course, you can specify an input and output directory as well as a custom HTML template to use instead of the default one.
 
-For full usage of `site_builder`, see:
+For full usage of `static_site_builder`, see:
 
-    $ site_builder help build
+    $ static_site_builder help build
 
 ## Templating
 
