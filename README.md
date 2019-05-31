@@ -6,7 +6,7 @@ This gem will convert your markdown files into HTML files, embedding the generat
 
 ## Installation
 
-    $ gem install static-site-builder
+    $ gem install static_site_builder
 
 This will add an executable called `site_builder` to your `$PATH`.
 
