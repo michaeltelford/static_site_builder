@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/michaeltelford/static_site_builder"
   spec.license       = "MIT"
 
-  spec.required_ruby_version = '~> 2'
+  spec.required_ruby_version = '~> 2.5'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -32,11 +32,11 @@ Gem::Specification.new do |spec|
   spec.executables   = ["site_builder"]
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.15"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_development_dependency "pry", "~> 0.11"
+  spec.add_development_dependency "bundler", "~> 2.0"
+  spec.add_development_dependency "rake", "~> 12.3"
+  spec.add_development_dependency "minitest", "~> 5.11"
+  spec.add_development_dependency "pry", "~> 0.12"
 
-  spec.add_runtime_dependency "redcarpet", "~> 3.4.0"
+  spec.add_runtime_dependency "redcarpet", "~> 3.4"
   spec.add_runtime_dependency "thor", "~> 0.20"
 end
