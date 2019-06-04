@@ -15,7 +15,7 @@ This will add an executable called `site_builder` to your `$PATH`.
 ```sh
 $ mkdir -p ~/my_site
 $ cd ~/my_site
-$ echo "# My Amazing Website" >> index.md
+$ echo "# My Amazing Website" > index.md
 $ site_builder build
 Site built with 1 HTML file(s):
 ./index.html

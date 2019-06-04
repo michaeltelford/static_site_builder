@@ -17,7 +17,7 @@ end
 desc "Builds a static HTML site from markdown files"
 task :build_site, :markdown_dirpath, :output_dirpath do |t, args|
   args.with_defaults(markdown_dirpath: "./markdown")
-  args.with_defaults(output_dirpath: args[:markdown_dirpath])
+  args.with_defaults(output_dirpath: "./markdown/html")
   puts StaticSiteBuilder.build_website(
     args[:markdown_dirpath],
     StaticSiteBuilder::HTMLTemplater.new,
