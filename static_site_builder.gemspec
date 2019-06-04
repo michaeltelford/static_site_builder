@@ -9,12 +9,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Michael Telford"]
   spec.email         = ["michael.telford@live.com"]
 
-  spec.summary       = "Static site builder."
+  spec.summary       = "Gem for building static content websites from markdown."
   spec.description   = "Gem for building static content websites from markdown."
   spec.homepage      = "https://github.com/michaeltelford/static_site_builder"
   spec.license       = "MIT"
   
-  spec.post_install_message = "Added the executable 'static_site_builder' to $PATH"
+  spec.post_install_message = "Added the executable 'site_builder' to $PATH"
 
   spec.required_ruby_version = '~> 2.5'
 
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
     f.match(%r{^(test|spec|features)/})
   end
   spec.bindir        = "exe"
-  spec.executables   = ["static_site_builder"]
+  spec.executables   = ["site_builder"]
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 2.0"
