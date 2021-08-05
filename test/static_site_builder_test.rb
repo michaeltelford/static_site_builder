@@ -4,4 +4,69 @@ class StaticSiteBuilderTest < Minitest::Test
   def test_version
     refute_nil StaticSiteBuilder::VERSION
   end
+
+  def test_build
+    html_files = StaticSiteBuilder.build_website(markdown_dir, default_template, output_dir)
+
+    assert_equal([
+      "#{output_dir}/index.html",
+      "#{output_dir}/contact.html",
+    ], html_files)
+    assert_equal expected_index_html, File.read("#{output_dir}/index.html")
+    assert_equal expected_contact_html, File.read("#{output_dir}/contact.html")
+  end
+
+  private
+
+  def expected_index_html
+    <<~HTML
+      <!doctype html>
+      <html lang=\"en\">
+      <head>
+        <meta charset=\"utf-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
+        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" integrity=\"sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB\" crossorigin=\"anonymous\">
+      </head>
+      <body>
+        <h1>Test Site</h1>
+
+      <p>This is a test site built using <code>static_site_builder</code>.</p>
+
+      <p>Enjoy! :-)</p>
+
+      <h2>Usage</h2>
+
+      <p>See its repository for the full usage instructions.</p>
+
+      <h2>Contact</h2>
+
+      <p>See the <a href=\"contact.html\">Contact</a> page for contact information.</p>
+
+      </body>
+      </html>
+    HTML
+  end
+
+  def expected_contact_html
+    <<~HTML
+      <!doctype html>
+      <html lang=\"en\">
+      <head>
+        <meta charset=\"utf-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">
+        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" integrity=\"sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB\" crossorigin=\"anonymous\">
+      </head>
+      <body>
+        <h1>Contact</h1>
+
+      <p><a href=\"index.html\">Home</a></p>
+
+      <h2>Contact Us</h2>
+
+      <p>TODO</p>
+
+      </body>
+      </html>
+    HTML
+  end
 end

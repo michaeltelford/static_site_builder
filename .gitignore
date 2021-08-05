@@ -9,3 +9,4 @@
 markdown/
 .DS_Store
 spike.*
+/test/markdown/html

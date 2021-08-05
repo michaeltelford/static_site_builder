@@ -39,7 +39,7 @@ module StaticSiteBuilder
 
     dirpath = File.dirname(markdown_filepath)
     output_dirpath ||= dirpath
-    FileUtils.mkdir_p(output_dirpath) unless Dir.exists?(output_dirpath)
+    FileUtils.mkdir_p(output_dirpath) unless Dir.exist?(output_dirpath)
 
     filename_with_md_ext = File.basename(markdown_filepath)
     filename_without_md_ext = filename_with_md_ext.gsub(".md", "")
