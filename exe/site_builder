@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+
 require "static_site_builder"
 require "thor"
 
@@ -21,15 +22,15 @@ class SiteBuilderCLI < Thor
       gem_included_template: options[:template] == DEFAULT_TEMPLATE
     )
 
-    html = StaticSiteBuilder.build_website(
+    html_files = StaticSiteBuilder.build_website(
       options[:in],
       template,
       options[:out]
     )
 
-    if not html.empty?
-      puts "Site built with #{html.length} HTML file(s):"
-      puts html
+    unless html_files.empty?
+      puts "Site built with #{html_files.length} HTML file(s):"
+      puts html_files
     else
       puts "No markdown files found in: #{options[:in]}"
     end

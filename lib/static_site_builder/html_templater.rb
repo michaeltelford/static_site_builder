@@ -1,6 +1,6 @@
 module StaticSiteBuilder
   class HTMLTemplater
-    EDITABLE_REGION = '<div id="editable_region"></div>'.freeze
+    EDITABLE_REGION  = '<div id="editable_region"></div>'.freeze
     DEFAULT_TEMPLATE = "templates/default_template.html".freeze
 
     attr_reader :template_filepath, :gem_included_template, :html
@@ -24,9 +24,7 @@ module StaticSiteBuilder
 
       read_template unless @html
 
-      if not valid?
-        raise "Missing editable region in template: #{EDITABLE_REGION}"
-      end
+      raise "Missing editable region in template: #{EDITABLE_REGION}" unless valid?
     end
 
     # Returns wether or not the @html has an EDITABLE_REGION or not.
@@ -45,15 +43,17 @@ module StaticSiteBuilder
 
     private
 
-    # Reads the @template_filepath file and sets @html to it's contents.
+    # Reads the @template_filepath file and sets @html to its contents.
     # The correct filepath is decided on based on wether or not the template is
     # built into the gem or on the user's local filesystem.
     def read_template
       path = @template_filepath
+
       if @gem_included_template
         relative_path = "../../#{@template_filepath}"
         path = File.expand_path(relative_path, File.dirname(__FILE__))
       end
+
       @html = File.read(path)
     end
   end
