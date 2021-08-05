@@ -13,10 +13,10 @@ Gem::Specification.new do |spec|
   spec.description   = "Gem for building static content websites from markdown."
   spec.homepage      = "https://github.com/michaeltelford/static_site_builder"
   spec.license       = "MIT"
-  
+
   spec.post_install_message = "Added the executable 'site_builder' to $PATH"
 
-  spec.required_ruby_version = '~> 2.5'
+  spec.required_ruby_version = '~> 2.7'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -35,10 +35,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "rake", "~> 12.3"
+  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "minitest", "~> 5.11"
   spec.add_development_dependency "pry", "~> 0.12"
 
   spec.add_runtime_dependency "redcarpet", "~> 3.4"
-  spec.add_runtime_dependency "thor", "~> 0.20"
+  spec.add_runtime_dependency "thor", "~> 1.1"
 end
