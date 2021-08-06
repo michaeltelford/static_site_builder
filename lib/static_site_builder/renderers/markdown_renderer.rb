@@ -1,5 +1,6 @@
 module StaticSiteBuilder
-  # Renders Markdown into HTML.
+  # Renders Markdown into HTML. Any existing HTML inside the Markdown will NOT be removed,
+  # allowing other renderers to be applied before this one where required.
   class MarkdownRenderer < Renderer
     attr_reader :markdown
 

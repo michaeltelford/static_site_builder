@@ -5,8 +5,9 @@ require "redcarpet"
 # Require all lib files here to enable a single require.
 require "static_site_builder/version"
 require "static_site_builder/renderers/renderer"
-require "static_site_builder/renderers/template_renderer"
+require "static_site_builder/renderers/yart_renderer"
 require "static_site_builder/renderers/markdown_renderer"
+require "static_site_builder/renderers/template_renderer"
 
 module StaticSiteBuilder
   # Takes a markdown_dirpath, finds all "*.md" files and converts each to a
@@ -32,9 +33,7 @@ module StaticSiteBuilder
     output_dirpath = self.remove_trailing_slash(output_dirpath)
 
     markdown = File.read(markdown_filepath)
-
-    html_body = MarkdownRenderer.new(markdown).render
-    html = template.render(html_body)
+    html = self.apply_renderers(template, markdown)
 
     dirpath = File.dirname(markdown_filepath)
     output_dirpath ||= dirpath
@@ -54,5 +53,12 @@ module StaticSiteBuilder
     return filepath unless filepath.end_with?("/")
 
     filepath.chop
+  end
+
+  # Apply the necessary renderers to the Markdown, returning a HTML String.
+  def self.apply_renderers(template, markdown)
+    markdown = YARTRenderer.new(markdown).render
+    html_body = MarkdownRenderer.new(markdown).render
+    template.render(html_body)
   end
 end

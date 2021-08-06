@@ -1,4 +1,5 @@
 module StaticSiteBuilder
+  # Renderer super class to be inherited from.
   class Renderer
     def initialize
     end

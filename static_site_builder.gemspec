@@ -38,6 +38,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "minitest", "~> 5.11"
   spec.add_development_dependency "pry", "~> 0.12"
+  spec.add_development_dependency "byebug", "~> 11.1"
+  spec.add_development_dependency "yart", "~> 0.1"
 
   spec.add_runtime_dependency "redcarpet", "~> 3.4"
   spec.add_runtime_dependency "thor", "~> 1.1"

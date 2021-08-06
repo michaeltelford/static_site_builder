@@ -1,5 +1,5 @@
 module StaticSiteBuilder
-  # Renders the given HTML body inside the given webpage template.
+  # Renders the given HTML body inside the given HTML webpage template.
   class TemplateRenderer < Renderer
     EDITABLE_REGION  = '<div id="editable_region"></div>'.freeze
     DEFAULT_TEMPLATE = "../templates/default_template.html".freeze

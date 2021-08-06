@@ -1,6 +1,7 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 require "static_site_builder"
+require "byebug"
 
 task default: :help
 

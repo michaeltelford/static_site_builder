@@ -6,7 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
-markdown/
-.DS_Store
-spike.*
+/markdown/
 /test/fixtures/output
+.DS_Store
+.byebug_history
