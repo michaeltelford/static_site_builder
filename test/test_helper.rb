@@ -12,8 +12,5 @@ def output_dir
 end
 
 def default_template
-  StaticSiteBuilder::HTMLTemplater.new(
-    template_filepath: StaticSiteBuilder::HTMLTemplater::DEFAULT_TEMPLATE,
-    gem_included_template: true,
-  )
+  StaticSiteBuilder::TemplateRenderer.new
 end

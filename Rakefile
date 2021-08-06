@@ -20,7 +20,7 @@ task :build_site, :markdown_dirpath, :output_dirpath do |t, args|
   args.with_defaults(output_dirpath: "./markdown/html")
   puts StaticSiteBuilder.build_website(
     args[:markdown_dirpath],
-    StaticSiteBuilder::HTMLTemplater.new,
+    StaticSiteBuilder::TemplateRenderer.new,
     args[:output_dirpath]
   )
 end

@@ -4,23 +4,22 @@ require "redcarpet"
 
 # Require all lib files here to enable a single require.
 require "static_site_builder/version"
-require "static_site_builder/html_templater"
+require "static_site_builder/renderers/renderer"
+require "static_site_builder/renderers/template_renderer"
+require "static_site_builder/renderers/markdown_renderer"
 
 module StaticSiteBuilder
-  # Converts markdown to html and returns it.
-  def self.render(markdown)
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-      tables: true,
-      fenced_code_blocks: true,
-      autolink: true,
-      strikethrough: true,
-      superscript: true,
-      underline: true,
-      highlight: true,
-      quote: true,
-      footnotes: true
-    ).render(markdown)
+  # Takes a markdown_dirpath, finds all "*.md" files and converts each to a
+  # "*.html" file in order to build a static website. A template is used to
+  # embed each built webpage in. The output_dirpath will default to the
+  # markdown_dirpath if not set.
+  def self.build_website(markdown_dirpath, template, output_dirpath=nil)
+    pattern = "#{markdown_dirpath}/*.md"
+
+    Dir.glob(pattern).map { |f| self.build_webpage(f, template, output_dirpath) }
   end
+
+  private
 
   # Takes a markdown_filepath, reads and converts its contents to html before
   # creating a html file of the same name in the output_dirpath directory.
@@ -34,7 +33,7 @@ module StaticSiteBuilder
 
     markdown = File.read(markdown_filepath)
 
-    html_body = self.render(markdown)
+    html_body = MarkdownRenderer.new(markdown).render
     html = template.render(html_body)
 
     dirpath = File.dirname(markdown_filepath)
@@ -48,16 +47,6 @@ module StaticSiteBuilder
     File.open(html_filepath, "w") { |f| f.write(html) }
 
     html_filepath
-  end
-
-  # Takes a markdown_dirpath, finds all "*.md" files and converts each to a
-  # "*.html" file in order to build a static website. A template is used to
-  # embed each built webpage in. The output_dirpath will default to the
-  # markdown_dirpath if not set.
-  def self.build_website(markdown_dirpath, template, output_dirpath=nil)
-    pattern = "#{markdown_dirpath}/*.md"
-
-    Dir.glob(pattern).map { |f| self.build_webpage(f, template, output_dirpath) }
   end
 
   # Removes the trailing / (if present) and returns.

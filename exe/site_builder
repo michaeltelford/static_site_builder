@@ -5,7 +5,7 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "static_site_builder"
 require "thor"
 
-DEFAULT_TEMPLATE = StaticSiteBuilder::HTMLTemplater::DEFAULT_TEMPLATE
+DEFAULT_TEMPLATE = StaticSiteBuilder::TemplateRenderer::DEFAULT_TEMPLATE
 
 class SiteBuilderCLI < Thor
   desc "build", "Builds a static HTML website from markdown"
@@ -17,7 +17,7 @@ class SiteBuilderCLI < Thor
     desc: "HTML template which embeds the markdown (<body>) of each webpage"
   )
   def build
-    template = StaticSiteBuilder::HTMLTemplater.new(
+    template = StaticSiteBuilder::TemplateRenderer.new(
       template_filepath: options[:template],
       gem_included_template: options[:template] == DEFAULT_TEMPLATE
     )

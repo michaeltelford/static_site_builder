@@ -1,7 +1,8 @@
 module StaticSiteBuilder
-  class HTMLTemplater
+  # Renders the given HTML body inside the given webpage template.
+  class TemplateRenderer < Renderer
     EDITABLE_REGION  = '<div id="editable_region"></div>'.freeze
-    DEFAULT_TEMPLATE = "templates/default_template.html".freeze
+    DEFAULT_TEMPLATE = "../templates/default_template.html".freeze
 
     attr_reader :template_filepath, :gem_included_template, :html
 
@@ -18,6 +19,8 @@ module StaticSiteBuilder
         gem_included_template: true,
         html: nil
       )
+      super()
+
       @template_filepath = template_filepath
       @gem_included_template = gem_included_template
       @html = html
