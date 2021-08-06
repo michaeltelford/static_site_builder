@@ -1,6 +1,10 @@
 require "test_helper"
 
 class StaticSiteBuilderTest < Minitest::Test
+  def setup
+    delete_output_files
+  end
+
   def test_version
     refute_nil StaticSiteBuilder::VERSION
   end
@@ -12,6 +16,33 @@ class StaticSiteBuilderTest < Minitest::Test
       "#{output_dir}/index.html",
       "#{output_dir}/contact.html",
     ], html_files)
+    assert_equal expected_index_html, File.read("#{output_dir}/index.html")
+    assert_equal expected_contact_html, File.read("#{output_dir}/contact.html")
+  end
+
+  def test_template
+    custom_template = StaticSiteBuilder::TemplateRenderer.new(
+      template_filepath: custom_template_path,
+      gem_included_template: false,
+    )
+    html_files = StaticSiteBuilder.build_website(markdown_dir, custom_template, output_dir)
+    template_test_id = "<body id='test'>"
+
+    assert_equal([
+      "#{output_dir}/index.html",
+      "#{output_dir}/contact.html",
+    ], html_files)
+    assert File.read("#{output_dir}/index.html").include?(template_test_id)
+    assert File.read("#{output_dir}/contact.html").include?(template_test_id)
+  end
+
+  def test_executable
+    `./exe/site_builder build --in #{markdown_dir} --out #{output_dir}`
+
+    assert_equal([
+      "#{output_dir}/index.html",
+      "#{output_dir}/contact.html",
+    ], Dir.glob("#{output_dir}/*.html"))
     assert_equal expected_index_html, File.read("#{output_dir}/index.html")
     assert_equal expected_contact_html, File.read("#{output_dir}/contact.html")
   end

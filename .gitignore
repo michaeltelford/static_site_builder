@@ -9,4 +9,4 @@
 markdown/
 .DS_Store
 spike.*
-/test/markdown/html
+/test/fixtures/output
