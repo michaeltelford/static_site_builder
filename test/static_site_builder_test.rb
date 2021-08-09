@@ -94,7 +94,7 @@ class StaticSiteBuilderTest < Minitest::Test
 
       <h2>Contact Us</h2>
 
-      <form action='/api/contact'><input type='email' required></input><input type='text' required></input><button type='submit'>Send Message</button></form>
+      <form action='/api/contact'><input type='email' required></input><input type='textarea' required></input><button type='submit'>Send Message</button></form>
 
       <p>Another YART snippet:</p>
 

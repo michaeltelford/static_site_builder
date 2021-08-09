@@ -7,7 +7,7 @@
 ```yart
 form action: "/api/contact" do
   input type: :email, required: true
-  input type: :text, required: true
+  input type: :textarea, required: true
   button(type: :submit) { "Send Message" }
 end
 ```

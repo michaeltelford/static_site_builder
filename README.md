@@ -53,6 +53,22 @@ If using your own template, you must ensure it's valid HTML and that it contains
 
 You can use this gem's built in [default template](https://github.com/michaeltelford/static_site_builder/blob/master/templates/default_template.html) as an example.
 
+## Beyond Markdown
+
+Markdown makes writing static content easy, but it doesn't support more advanced HTML features (like forms etc). You can write your own HTML within the markdown document and it will be parsed as is. Alternatively, you can use the [`yart`](https://github.com/michaeltelford/yart) gem to turn Ruby into HTML, removing the boiler plate from generating HTML.
+
+For example, placing the following code snippet inside your markdown will create a contact form in the generated HTML page:
+
+    ```yart
+    form action: "/api/contact" do
+        input type: :email, required: true
+        input type: :textarea, required: true
+        button(type: :submit) { "Send Message" }
+    end
+    ```
+
+The important bit here is the ` ```yart ` line which tells the `YART` parser to render this snippet of Ruby into HTML. Check out the [`yart README`](https://github.com/michaeltelford/yart) for more details on how to use the `YART` DSL.
+
 ## Development
 
 I welcome community contribution as long as the changes makes sense.
