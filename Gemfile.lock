@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    static_site_builder (0.4.0)
+    static_site_builder (0.5.0)
       redcarpet (~> 3.4)
       thor (~> 1.1)
 
