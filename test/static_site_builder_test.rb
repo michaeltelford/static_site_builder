@@ -13,9 +13,9 @@ class StaticSiteBuilderTest < Minitest::Test
     html_files = StaticSiteBuilder.build_website(markdown_dir, default_template, output_dir)
 
     assert_equal([
-      "#{output_dir}/index.html",
       "#{output_dir}/contact.html",
-    ], html_files)
+      "#{output_dir}/index.html",
+    ], html_files.sort)
     assert_equal expected_index_html, File.read("#{output_dir}/index.html")
     assert_equal expected_contact_html, File.read("#{output_dir}/contact.html")
   end
@@ -29,9 +29,9 @@ class StaticSiteBuilderTest < Minitest::Test
     template_test_id = "<body id='test'>"
 
     assert_equal([
-      "#{output_dir}/index.html",
       "#{output_dir}/contact.html",
-    ], html_files)
+      "#{output_dir}/index.html",
+    ], html_files.sort)
     assert File.read("#{output_dir}/index.html").include?(template_test_id)
     assert File.read("#{output_dir}/contact.html").include?(template_test_id)
   end
