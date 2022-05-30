@@ -2,7 +2,7 @@ module StaticSiteBuilder
   # Renders the given HTML body inside the given HTML webpage template.
   class TemplateRenderer < Renderer
     EDITABLE_REGION  = '<div id="editable_region"></div>'.freeze
-    DEFAULT_TEMPLATE = "../templates/default_template.html".freeze
+    DEFAULT_TEMPLATE = File.join("..", "templates", "default_template.html").freeze
 
     attr_reader :template_filepath, :gem_included_template, :html
 
@@ -53,7 +53,7 @@ module StaticSiteBuilder
       path = @template_filepath
 
       if @gem_included_template
-        relative_path = "../../#{@template_filepath}"
+        relative_path = File.join("..", "..", @template_filepath)
         path = File.expand_path(relative_path, File.dirname(__FILE__))
       end
 

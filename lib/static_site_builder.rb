@@ -15,7 +15,7 @@ module StaticSiteBuilder
   # embed each built webpage in. The output_dirpath will default to the
   # markdown_dirpath if not set.
   def self.build_website(markdown_dirpath, template, output_dirpath=nil)
-    pattern = "#{markdown_dirpath}/*.md"
+    pattern = File.join(markdown_dirpath, "*.md")
 
     Dir.glob(pattern).map { |f| self.build_webpage(f, template, output_dirpath) }
   end
@@ -42,7 +42,7 @@ module StaticSiteBuilder
     filename_with_md_ext = File.basename(markdown_filepath)
     filename_without_md_ext = filename_with_md_ext.gsub(".md", "")
 
-    html_filepath = "#{output_dirpath}/#{filename_without_md_ext}.html"
+    html_filepath = File.join(output_dirpath, "#{filename_without_md_ext}.html")
     File.open(html_filepath, "w") { |f| f.write(html) }
 
     html_filepath
