@@ -9,7 +9,7 @@ module StaticSiteBuilder
     # Initializes a HTML template with either a template_filepath to a HTML file
     # or a HTML string. Either way the HTML should be valid and contain the
     # EDITABLE_REGION. If no params are provided then the DEFAULT_TEMPLATE is
-    # used instead. The DEFAULT_TEMPLATE uses bootstrap 4 (from a CDN).
+    # used instead. The DEFAULT_TEMPLATE uses simple.css (from a CDN).
     # The html takes precedence over the template_filepath if provided.
     # The gem_included_template param distinguishes between a user created
     # template (on their local file system) and an included template (built

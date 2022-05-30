@@ -2,7 +2,7 @@
 
 Build a HTML website from markdown files.
 
-This gem will convert your markdown files into HTML files, embedding the generated HTML into a template (making up the full webpage). This gem's default [Bootstrap](https://getbootstrap.com/) template will be used unless you specify a template of your own. More on this further down.
+This gem will convert your markdown files into HTML files, embedding the generated HTML into a template (making up the full webpage). This gem's default [Simple.css](https://simplecss.org/) template will be used unless you specify a template of your own. More on this further down.
 
 ## Installation
 
@@ -32,7 +32,7 @@ For full usage of `site_builder`, see:
 
 ## Templating
 
-The default template uses Bootstrap 4.1 to enable a stylish and responsive website design out of the box.
+The default template uses [Simple.css](https://simplecss.org/) to enable a stylish and responsive web design out of the box.
 
 Custom templates are simply HTML files which include an editable region (inside a `<body>` tag) consisting of the following markdown:
 
